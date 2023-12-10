@@ -39,8 +39,8 @@ app.MapGet("/login", (TokenService service) =>
     Id: 1,
     Name: "Dai",
     Email: "dai@gmail.com",
-    Image: "qualquer",
-    Password: "qqq",
+    Image: "imagem do usuário",
+    Password: "qualquer",
     Roles: new[] { "student", "premium" });
     return service.Create(user);
 });
@@ -48,10 +48,10 @@ app.MapGet("/login", (TokenService service) =>
 app.MapGet("/restrito", (ClaimsPrincipal user) => new
 {
     id = user.Id(),
-    // name = user.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value,
-    // email = user.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value,
-    // giveName = user.Claims.FirstOrDefault(x => x.Type == ClaimTypes.GivenName)?.Value,
-    // image = user.Claims.FirstOrDefault(x => x.Type == "image"),
+    name = user.Name(),
+    email = user.Email(),
+    giveName = user.GivenName(),
+    image = user.Image(),
 })
     .RequireAuthorization();
 app.MapGet("/admin", () => "Você tem acesso")

@@ -30,7 +30,7 @@ namespace JwtAspNet.Services
         {
             var ci = new ClaimsIdentity();
             ci.AddClaim(new Claim("id", user.Id.ToString()));
-            ci.AddClaim(new Claim(ClaimTypes.Name, user.Email));
+            ci.AddClaim(new Claim(ClaimTypes.Name, user.Name));
             ci.AddClaim(new Claim(ClaimTypes.Email, user.Email));
             ci.AddClaim(new Claim(ClaimTypes.GivenName, user.Email));
             ci.AddClaim(new Claim("image", user.Image));
